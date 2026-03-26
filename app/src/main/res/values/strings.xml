@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">DeckVault</string>
+    <string name="subtitle">Tu colección, bajo llave.</string>
+    <string name="email_hint">Correo electrónico</string>
+    <string name="password_hint">Contraseña</string>
+    <string name="login_button">ENTRAR A LA BÓVEDA</string>
 </resources>
