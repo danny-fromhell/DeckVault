@@ -1,118 +1,161 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fillViewport="true"
-    android:background="@drawable/bg_pokemon_cards"
     tools:context=".PersonalInfoFragment">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <ImageView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="24dp">
+        android:layout_height="match_parent"
+        android:contentDescription="Fondo"
+        android:scaleType="centerCrop"
+        android:src="@drawable/bg_pokemon_cards" />
 
-        <TextView
-            android:id="@+id/tvPersonalTitle"
-            android:layout_width="0dp"
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#66000000" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="48dp"
-            android:gravity="center"
-            android:text="Información personal"
-            android:textColor="@android:color/white"
-            android:textSize="28sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:padding="24dp">
 
-        <EditText
-            android:id="@+id/etNombre"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="40dp"
-            android:backgroundTint="@android:color/white"
-            android:hint="Nombre(s)"
-            android:inputType="textPersonName"
-            android:textColor="@android:color/white"
-            android:textColorHint="#CCFFFFFF"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tvPersonalTitle" />
+            <ImageView
+                android:id="@+id/imgLogoPersonal"
+                android:layout_width="72dp"
+                android:layout_height="72dp"
+                android:layout_marginTop="48dp"
+                android:adjustViewBounds="true"
+                android:contentDescription="Logo DeckVault"
+                android:src="@drawable/deckvault_logo"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-        <EditText
-            android:id="@+id/etPrimerApellido"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:backgroundTint="@android:color/white"
-            android:hint="Primer apellido"
-            android:inputType="textPersonName"
-            android:textColor="@android:color/white"
-            android:textColorHint="#CCFFFFFF"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/etNombre" />
+            <TextView
+                android:id="@+id/tvPersonalAppTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="¡Bienvenido a DeckVault!"
+                android:textColor="@android:color/white"
+                android:textSize="30sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/imgLogoPersonal" />
 
-        <EditText
-            android:id="@+id/etSegundoApellido"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:backgroundTint="@android:color/white"
-            android:hint="Segundo apellido (opcional)"
-            android:inputType="textPersonName"
-            android:textColor="@android:color/white"
-            android:textColorHint="#CCFFFFFF"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/etPrimerApellido" />
+            <TextView
+                android:id="@+id/tvPersonalTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:gravity="center"
+                android:text="Información personal"
+                android:textColor="#D9FFFFFF"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvPersonalAppTitle" />
 
-        <EditText
-            android:id="@+id/etTelefono"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:backgroundTint="@android:color/white"
-            android:hint="Teléfono"
-            android:inputType="phone"
-            android:maxLength="10"
-            android:textColor="@android:color/white"
-            android:textColorHint="#CCFFFFFF"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/etSegundoApellido" />
+            <EditText
+                android:id="@+id/etNombre"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:backgroundTint="@android:color/white"
+                android:hint="Nombre(s)"
+                android:inputType="textPersonName"
+                android:textColor="@android:color/white"
+                android:textColorHint="#CCFFFFFF"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvPersonalTitle" />
 
-        <EditText
-            android:id="@+id/etFechaNacimiento"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:backgroundTint="@android:color/white"
-            android:clickable="true"
-            android:focusable="false"
-            android:hint="Fecha de nacimiento"
-            android:inputType="none"
-            android:textColor="@android:color/white"
-            android:textColorHint="#CCFFFFFF"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/etTelefono" />
+            <EditText
+                android:id="@+id/etPrimerApellido"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:backgroundTint="@android:color/white"
+                android:hint="Primer apellido"
+                android:inputType="textPersonName"
+                android:textColor="@android:color/white"
+                android:textColorHint="#CCFFFFFF"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/etNombre" />
 
-        <Button
-            android:id="@+id/btnFinalizar"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="28dp"
-            android:layout_marginBottom="40dp"
-            android:backgroundTint="#7E57C2"
-            android:text="Finalizar"
-            android:textAllCaps="false"
-            android:textColor="@android:color/white"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/etFechaNacimiento" />
+            <EditText
+                android:id="@+id/etSegundoApellido"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:backgroundTint="@android:color/white"
+                android:hint="Segundo apellido (opcional)"
+                android:inputType="textPersonName"
+                android:textColor="@android:color/white"
+                android:textColorHint="#CCFFFFFF"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/etPrimerApellido" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
-</ScrollView>
+            <EditText
+                android:id="@+id/etTelefono"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:backgroundTint="@android:color/white"
+                android:hint="Teléfono"
+                android:inputType="phone"
+                android:maxLength="10"
+                android:textColor="@android:color/white"
+                android:textColorHint="#CCFFFFFF"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/etSegundoApellido" />
+
+            <EditText
+                android:id="@+id/etFechaNacimiento"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:backgroundTint="@android:color/white"
+                android:clickable="true"
+                android:focusable="false"
+                android:hint="Fecha de nacimiento"
+                android:inputType="none"
+                android:textColor="@android:color/white"
+                android:textColorHint="#CCFFFFFF"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/etTelefono" />
+
+            <Button
+                android:id="@+id/btnFinalizar"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:layout_marginBottom="32dp"
+                android:background="@drawable/bg_button_gradient"
+                android:text="Finalizar"
+                android:textAllCaps="false"
+                android:textColor="@android:color/white"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/etFechaNacimiento" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+
+</FrameLayout>
