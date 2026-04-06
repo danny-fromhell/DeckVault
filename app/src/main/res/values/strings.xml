@@ -1,5 +1,9 @@
 <resources>
+
+    <!-- APP -->
     <string name="app_name">DeckVault</string>
+
+    <!-- LOGIN / REGISTER TITLES -->
     <string name="welcome_title">¡Bienvenido!</string>
     <string name="login_instructions">Inicia sesión para continuar</string>
     <string name="register_instructions">Regístrate para continuar</string>
@@ -8,6 +12,7 @@
     <string name="forgot_password_title">Recuperar contraseña</string>
     <string name="personal_info_title">Información Personal</string>
 
+    <!-- LABELS -->
     <string name="email_label">Correo:</string>
     <string name="password_label">Contraseña:</string>
     <string name="name_label">Nombre:</string>
@@ -16,14 +21,25 @@
     <string name="phone_label">Teléfono:</string>
     <string name="birthdate_label">Fecha de nacimiento:</string>
 
+    <!-- HINTS -->
+    <string name="email_hint">Correo electrónico</string>
+    <string name="password_hint">Contraseña</string>
+    <string name="name_hint">Nombre</string>
+
+    <!-- BUTTONS -->
     <string name="login_button">Ingresar</string>
     <string name="register_button">Registrar</string>
     <string name="recover_button">Recuperar</string>
     <string name="continue_button">Continuar</string>
 
+    <!-- LINKS -->
     <string name="register_link">Registrarse</string>
     <string name="forgot_password_link">Restablecer contraseña</string>
 
+    <!-- CONTENT DESCRIPTIONS -->
     <string name="content_description_icon">Icono</string>
     <string name="content_description_back">Regresar</string>
+    <string name="logo_desc">Logo de DeckVault</string>
+    <string name="background_desc">Fondo de cartas de DeckVault</string>
+
 </resources>

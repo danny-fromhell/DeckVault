@@ -4,10 +4,10 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.TextView
+import android.widget.ImageView
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import com.google.android.material.button.MaterialButton
 
 class RegisterFragment : Fragment() {
 
@@ -21,14 +21,14 @@ class RegisterFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val btnContinuar = view.findViewById<Button>(R.id.btnContinuar)
-        val tvIniciarSesion = view.findViewById<TextView>(R.id.tvIniciarSesion)
+        val btnBack = view.findViewById<ImageView>(R.id.btnBack)
+        val btnRegister = view.findViewById<MaterialButton>(R.id.btnRegister)
 
-        btnContinuar.setOnClickListener {
-            findNavController().navigate(R.id.action_registerFragment_to_loginFragment)
+        btnBack.setOnClickListener {
+            findNavController().navigateUp()
         }
 
-        tvIniciarSesion.setOnClickListener {
+        btnRegister.setOnClickListener {
             findNavController().navigate(R.id.action_registerFragment_to_personalInfoFragment)
         }
     }
