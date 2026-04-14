@@ -25,16 +25,29 @@
     <string name="email_hint">Correo electrónico</string>
     <string name="password_hint">Contraseña</string>
     <string name="name_hint">Nombre</string>
+    <string name="first_last_name_hint">Primer apellido</string>
+    <string name="second_last_name_hint">Segundo apellido</string>
+    <string name="phone_hint">Teléfono</string>
+    <string name="birthdate_hint">Fecha de nacimiento</string>
 
     <!-- BUTTONS -->
     <string name="login_button">Ingresar</string>
     <string name="register_button">Registrar</string>
     <string name="recover_button">Recuperar</string>
     <string name="continue_button">Continuar</string>
+    <string name="finish_button">Finalizar</string>
 
     <!-- LINKS -->
     <string name="register_link">Registrarse</string>
     <string name="forgot_password_link">Restablecer contraseña</string>
+    <string name="back_to_login">Volver al login</string>
+
+    <!-- TEXTOS EXTRA (los que te estaban causando warnings) -->
+    <string name="recover_password_subtitle">Recupera tu contraseña para continuar</string>
+    <string name="recover_password_message">Te enviaremos un correo con instrucciones para restablecer tu contraseña.</string>
+
+    <!-- NOMBRES COMPLETOS -->
+    <string name="full_name_hint">Nombre(s)</string>
 
     <!-- CONTENT DESCRIPTIONS -->
     <string name="content_description_icon">Icono</string>

@@ -5,44 +5,39 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.EditText
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import com.example.deckvault.databinding.FragmentPersonalInfoBinding
 import java.util.Calendar
 
 class PersonalInfoFragment : Fragment() {
 
-    private lateinit var etNombre: EditText
-    private lateinit var etPrimerApellido: EditText
-    private lateinit var etSegundoApellido: EditText
-    private lateinit var etTelefono: EditText
-    private lateinit var etFechaNacimiento: EditText
-    private lateinit var btnFinalizar: Button
+    private var _binding: FragmentPersonalInfoBinding? = null
+    private val binding get() = _binding!!
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.fragment_personal_info, container, false)
+    ): View {
+        _binding = FragmentPersonalInfoBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        etNombre = view.findViewById(R.id.etNombre)
-        etPrimerApellido = view.findViewById(R.id.etPrimerApellido)
-        etSegundoApellido = view.findViewById(R.id.etSegundoApellido)
-        etTelefono = view.findViewById(R.id.etTelefono)
-        etFechaNacimiento = view.findViewById(R.id.etFechaNacimiento)
-        btnFinalizar = view.findViewById(R.id.btnFinalizar)
-
-        etFechaNacimiento.setOnClickListener {
-            mostrarDatePicker()
+        binding.etFechaNacimiento.apply {
+            keyListener = null
+            isFocusable = false
+            isClickable = true
+            setOnClickListener {
+                mostrarDatePicker()
+            }
         }
 
-        btnFinalizar.setOnClickListener {
+        binding.btnFinalizar.setOnClickListener {
             if (validarCampos()) {
                 Toast.makeText(requireContext(), "Registro completado", Toast.LENGTH_SHORT).show()
                 findNavController().navigate(R.id.action_personalInfoFragment_to_loginFragment)
@@ -60,52 +55,65 @@ class PersonalInfoFragment : Fragment() {
             requireContext(),
             { _, year, month, dayOfMonth ->
                 val fecha = String.format("%02d/%02d/%04d", dayOfMonth, month + 1, year)
-                etFechaNacimiento.setText(fecha)
+                binding.etFechaNacimiento.setText(fecha)
             },
             anio,
             mes,
             dia
         )
 
+        datePickerDialog.datePicker.maxDate = calendario.timeInMillis
         datePickerDialog.show()
     }
 
     private fun validarCampos(): Boolean {
-        val nombre = etNombre.text.toString().trim()
-        val primerApellido = etPrimerApellido.text.toString().trim()
-        val telefono = etTelefono.text.toString().trim()
-        val fechaNacimiento = etFechaNacimiento.text.toString().trim()
+        val nombre = binding.etNombre.text?.toString()?.trim().orEmpty()
+        val primerApellido = binding.etPrimerApellido.text?.toString()?.trim().orEmpty()
+        val segundoApellido = binding.etSegundoApellido.text?.toString()?.trim().orEmpty()
+        val telefono = binding.etTelefono.text?.toString()?.trim().orEmpty()
+        val fechaNacimiento = binding.etFechaNacimiento.text?.toString()?.trim().orEmpty()
 
         if (nombre.isEmpty()) {
-            etNombre.error = "Ingresa tu nombre"
-            etNombre.requestFocus()
+            binding.etNombre.error = "Ingresa tu nombre"
+            binding.etNombre.requestFocus()
             return false
         }
 
         if (primerApellido.isEmpty()) {
-            etPrimerApellido.error = "Ingresa tu primer apellido"
-            etPrimerApellido.requestFocus()
+            binding.etPrimerApellido.error = "Ingresa tu primer apellido"
+            binding.etPrimerApellido.requestFocus()
+            return false
+        }
+
+        if (segundoApellido.isEmpty()) {
+            binding.etSegundoApellido.error = "Ingresa tu segundo apellido"
+            binding.etSegundoApellido.requestFocus()
             return false
         }
 
         if (telefono.isEmpty()) {
-            etTelefono.error = "Ingresa tu teléfono"
-            etTelefono.requestFocus()
+            binding.etTelefono.error = "Ingresa tu teléfono"
+            binding.etTelefono.requestFocus()
             return false
         }
 
-        if (telefono.length < 10) {
-            etTelefono.error = "Debe tener 10 dígitos"
-            etTelefono.requestFocus()
+        if (telefono.length != 10 || !telefono.all { it.isDigit() }) {
+            binding.etTelefono.error = "Debe tener 10 dígitos"
+            binding.etTelefono.requestFocus()
             return false
         }
 
         if (fechaNacimiento.isEmpty()) {
-            etFechaNacimiento.error = "Selecciona tu fecha de nacimiento"
-            etFechaNacimiento.requestFocus()
+            binding.etFechaNacimiento.error = "Selecciona tu fecha de nacimiento"
+            binding.etFechaNacimiento.requestFocus()
             return false
         }
 
         return true
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }

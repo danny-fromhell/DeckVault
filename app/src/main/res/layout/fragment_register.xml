@@ -18,7 +18,7 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#66000000" />
+        android:background="#80000000" />
 
     <!-- Scroll -->
     <ScrollView
@@ -60,8 +60,8 @@
                 android:id="@+id/btnBack"
                 android:layout_width="24dp"
                 android:layout_height="24dp"
-                android:layout_marginTop="24dp"
-                android:contentDescription="Regresar"
+                android:layout_marginTop="32dp"
+                android:contentDescription="@string/content_description_back"
                 android:src="@drawable/ic_arrow_back_24"
                 app:layout_constraintTop_toTopOf="@id/headerPanel"
                 app:layout_constraintStart_toStartOf="@id/guidelineStart" />
@@ -83,7 +83,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:text="¡Bienvenido!"
+                android:text="@string/welcome_title"
                 android:textColor="@color/pure_white"
                 android:textSize="28sp"
                 android:textStyle="bold"
@@ -96,7 +96,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:text="Regístrate para continuar"
+                android:text="@string/register_instructions"
                 android:textColor="#D9FFFFFF"
                 android:textSize="15sp"
                 app:layout_constraintTop_toBottomOf="@id/tvTitleRegister"
@@ -122,8 +122,8 @@
                     style="@style/Widget.Material3.TextInputLayout.FilledBox"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:hint="Nombre"
-                    app:boxBackgroundColor="#99FFFFFF"
+                    android:hint="@string/name_hint"
+                    app:boxBackgroundColor="#80FFFFFF"
                     app:boxCornerRadiusTopStart="18dp"
                     app:boxCornerRadiusTopEnd="18dp"
                     app:boxCornerRadiusBottomStart="18dp"
@@ -139,7 +139,7 @@
                         android:id="@+id/etName"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:minHeight="58dp"
+                        android:height="58dp"
                         android:background="@null"
                         android:inputType="textPersonName"
                         android:paddingStart="12dp"
@@ -157,7 +157,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
                     android:hint="@string/email_hint"
-                    app:boxBackgroundColor="#99FFFFFF"
+                    app:boxBackgroundColor="#80FFFFFF"
                     app:boxCornerRadiusTopStart="18dp"
                     app:boxCornerRadiusTopEnd="18dp"
                     app:boxCornerRadiusBottomStart="18dp"
@@ -228,8 +228,8 @@
                     android:background="@drawable/bg_button_gradient"
                     android:elevation="6dp"
                     android:stateListAnimator="@null"
-                    android:text="Registrar"
-                    android:textColor="@color/pure_white"
+                    android:text="@string/register_button"
+                    android:textColor="@android:color/white"
                     android:textSize="16sp"
                     android:textStyle="bold"
                     app:backgroundTint="@null"
