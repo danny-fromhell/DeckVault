@@ -24,9 +24,6 @@
         android:name="com.example.deckvault.RegisterFragment"
         android:label="RegisterFragment">
         <action
-            android:id="@+id/action_registerFragment_to_loginFragment"
-            app:destination="@id/loginFragment" />
-        <action
             android:id="@+id/action_registerFragment_to_personalInfoFragment"
             app:destination="@id/personalInfoFragment" />
     </fragment>
