@@ -21,7 +21,7 @@
 
     <fragment
         android:id="@+id/registerFragment"
-        android:name="com.example.deckvault.RegisterFragment"
+        android:name="com.example.deckvault.signup.RegisterFragment"
         android:label="RegisterFragment">
         <action
             android:id="@+id/action_registerFragment_to_personalInfoFragment"
@@ -39,7 +39,7 @@
 
     <fragment
         android:id="@+id/personalInfoFragment"
-        android:name="com.example.deckvault.PersonalInfoFragment"
+        android:name="com.example.deckvault.RegisterInfoFragment"
         android:label="PersonalInfoFragment">
         <action
             android:id="@+id/action_personalInfoFragment_to_loginFragment"

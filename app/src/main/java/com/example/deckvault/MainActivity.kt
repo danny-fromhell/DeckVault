@@ -1,8 +1,6 @@
 package com.example.deckvault
 
 import android.os.Bundle
-import android.os.Handler
-import android.os.Looper
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.airbnb.lottie.LottieAnimationView
@@ -20,9 +18,14 @@ class MainActivity : AppCompatActivity(), FragmentCommunicator {
         loadingScreen = findViewById(R.id.loadingScreen)
         lottieLoading = findViewById(R.id.lottieLoading)
 
+        // Loader inicial solo una vez
+        showInitialLoader()
+    }
+
+    private fun showInitialLoader() {
         manageLoader(true)
 
-        Handler(Looper.getMainLooper()).postDelayed({
+        loadingScreen.postDelayed({
             manageLoader(false)
         }, 2000)
     }
@@ -31,7 +34,9 @@ class MainActivity : AppCompatActivity(), FragmentCommunicator {
         loadingScreen.visibility = if (isVisible) View.VISIBLE else View.GONE
 
         if (isVisible) {
-            lottieLoading.playAnimation()
+            if (!lottieLoading.isAnimating) {
+                lottieLoading.playAnimation()
+            }
         } else {
             lottieLoading.cancelAnimation()
         }

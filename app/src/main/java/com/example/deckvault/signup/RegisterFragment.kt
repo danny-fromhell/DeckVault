@@ -1,4 +1,4 @@
-package com.example.deckvault
+package com.example.deckvault.signup
 
 import android.content.Context
 import android.os.Bundle
@@ -9,21 +9,22 @@ import android.widget.Toast
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
-import androidx.lifecycle.Lifecycle
 import androidx.navigation.fragment.findNavController
+import com.example.deckvault.R
 import com.example.deckvault.core.FragmentCommunicator
 import com.example.deckvault.core.ResponseService
-import com.example.deckvault.databinding.FragmentLoginBinding
+import com.example.deckvault.databinding.FragmentRegisterBinding
 import kotlinx.coroutines.launch
 
-class LoginFragment : Fragment() {
+class RegisterFragment : Fragment() {
 
-    private var _binding: FragmentLoginBinding? = null
+    private var _binding: FragmentRegisterBinding? = null
     private val binding get() = _binding!!
 
-    private val viewModel: SignInViewModel by viewModels()
+    private val viewModel: RegisterViewModel by viewModels()
 
     private var communicator: FragmentCommunicator? = null
 
@@ -37,7 +38,7 @@ class LoginFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentLoginBinding.inflate(inflater, container, false)
+        _binding = FragmentRegisterBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -45,23 +46,24 @@ class LoginFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         setupListeners()
-        observeSignInState()
+        observeRegisterState()
     }
 
     private fun setupListeners() {
-        binding.tvRegistrarse.setOnClickListener {
-            findNavController().navigate(R.id.action_loginFragment_to_registerFragment)
+
+        binding.btnBack.setOnClickListener {
+            findNavController().navigateUp()
         }
 
-        binding.tvForgotPassword.setOnClickListener {
-            findNavController().navigate(R.id.action_loginFragment_to_forgotPasswordFragment)
-        }
-
-        binding.btnLogin.setOnClickListener {
+        binding.btnRegister.setOnClickListener {
             val email = binding.etEmail.text.toString().trim()
             val password = binding.etPassword.text.toString().trim()
 
-            viewModel.requestLogin(email, password)
+            viewModel.requestSignUp(
+                email = email,
+                password = password,
+                confirmPassword = password // temporal
+            )
         }
 
         binding.etEmail.addTextChangedListener {
@@ -73,11 +75,12 @@ class LoginFragment : Fragment() {
         }
     }
 
-    private fun observeSignInState() {
+    private fun observeRegisterState() {
         viewLifecycleOwner.lifecycleScope.launch {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
-                viewModel.signInState.collect { state ->
+                viewModel.registerState.collect { state ->
                     when (state) {
+
                         is ResponseService.Loading -> {
                             communicator?.manageLoader(true)
                         }
@@ -85,8 +88,14 @@ class LoginFragment : Fragment() {
                         is ResponseService.Success -> {
                             communicator?.manageLoader(false)
 
+                            Toast.makeText(
+                                requireContext(),
+                                "Registro exitoso",
+                                Toast.LENGTH_SHORT
+                            ).show()
+
                             findNavController().navigate(
-                                R.id.action_loginFragment_to_personalInfoFragment
+                                R.id.action_registerFragment_to_personalInfoFragment
                             )
 
                             viewModel.resetState()
@@ -94,7 +103,13 @@ class LoginFragment : Fragment() {
 
                         is ResponseService.Error -> {
                             communicator?.manageLoader(false)
-                            Toast.makeText(requireContext(), state.message, Toast.LENGTH_SHORT).show()
+
+                            Toast.makeText(
+                                requireContext(),
+                                state.message,
+                                Toast.LENGTH_SHORT
+                            ).show()
+
                             viewModel.resetState()
                         }
 

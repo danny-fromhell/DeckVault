@@ -11,7 +11,7 @@ import androidx.navigation.fragment.findNavController
 import com.example.deckvault.databinding.FragmentPersonalInfoBinding
 import java.util.Calendar
 
-class PersonalInfoFragment : Fragment() {
+class RegisterInfoFragment : Fragment() {
 
     private var _binding: FragmentPersonalInfoBinding? = null
     private val binding get() = _binding!!
